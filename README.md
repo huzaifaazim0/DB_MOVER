@@ -5,7 +5,7 @@ Export and Import your Database easily
 ### Features
 
 - Import CSV, XSLX, XLX, Number, ODS, and similar formats
-- Exports in CSV
+- Exports in XLSX
 - Currently supports only Mysql, MariaDB Database
 - Column Mappings
 

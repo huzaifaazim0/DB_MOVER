@@ -57,11 +57,9 @@ router.post("/upload/file", async (req, res) => {
 					"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" &&
 				file.mimetype == "application/vnd.ms-excel"
 			) {
-				return res
-					.status(400)
-					.json({
-						error: "Input file type not supported. Only use CSV, XLS and XLSX",
-					});
+				return res.status(400).json({
+					error: "Input file type not supported. Only use CSV, XLS and XLSX",
+				});
 			}
 
 			const pathToFile = path.join(
@@ -182,36 +180,20 @@ router.post("/export", async (req, res) => {
 
 	try {
 		const [rows, fields] = await connection.query(selectQuery);
+		// Create a new workbook and add a worksheet
+		const workbook = XLSX.utils.book_new();
+		const worksheet = XLSX.utils.json_to_sheet(rows);
 
-		// Extract headers from the first object's keys
-		csvData = [];
-		const headers = Object.keys(rows[0]);
+		// Add the worksheet to the workbook
+		XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
-		csvData.push(headers);
+		// Create a temporary file path on the server
+		const filePath = "./public/files/export-" + Date.now() + ".xlsx";
 
-		rows.forEach((record) => {
-			const row = headers.map((header) => record[header]);
-			csvData.push(row);
-		});
+		// Write the workbook to the file
+		XLSX.writeFile(workbook, filePath);
 
-		let filePath = "./export-" + Date.now() + ".csv";
-		const csvContent = csvData.map((row) => row.join(",")).join("\n");
-
-		fs.writeFileSync(filePath, csvContent, "utf-8");
-
-		res.download(filePath, "data.csv", (err) => {
-			if (err) {
-				res.json({ status: false, error });
-			} else {
-				fs.unlink(filePath, (err) => {
-					if (err) {
-						console.error("Error deleting file:", err);
-					} else {
-						console.log("Temporary file deleted");
-					}
-				});
-			}
-		});
+		res.json({ status: true, filePath });
 	} catch (error) {
 		console.log(error);
 		res.json({ status: false, error });

@@ -100,29 +100,34 @@ $("#wizard").steps({
 						pass: $("#password").val(),
 						db: $("#database").val(),
 					});
-					console.log(response);
-					const blob = new Blob([response], {
-						type: "application/octet-stream",
-					});
-					const url = window.URL.createObjectURL(blob);
+					// console.log(response);
+					// const blob = new Blob([response], {
+					// 	type: "application/octet-stream",
+					// });
+					// const url = window.URL.createObjectURL(blob);
 
-					// Create a temporary <a> element to trigger the download
-					const a = document.createElement("a");
-					a.href = url;
-					a.download = "export-" + Date.now() + ".csv";
-					a.style.display = "none";
-					document.body.appendChild(a);
+					// // Create a temporary <a> element to trigger the download
+					// const a = document.createElement("a");
+					// a.href = url;
+					// a.download = "export-" + Date.now() + ".csv";
+					// a.style.display = "none";
+					// document.body.appendChild(a);
 
-					// Trigger the download
-					a.click();
+					// // Trigger the download
+					// a.click();
 
-					// Clean up
-					document.body.removeChild(a);
-					window.URL.revokeObjectURL(url);
-
+					// // Clean up
+					// document.body.removeChild(a);
+					// window.URL.revokeObjectURL(url);
 					document.getElementById("step5Heading").innerText = "Completed";
 					document.getElementById("step5Status").innerText =
 						"Exported Successfully. The file should be downloading any minute now.";
+					if (response.status) {
+						window.location = String("/" + response.filePath).replace(
+							"/public",
+							""
+						);
+					}
 				} catch (error) {
 					document.getElementById("step5Heading").innerText = "Error Occured";
 					document.getElementById("step5Status").innerText = error.message;
