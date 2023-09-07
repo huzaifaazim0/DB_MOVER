@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DBMove</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/bd-wizard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/filepond/4.30.4/filepond.css" integrity="sha512-OwkTbucz29JjQUeii4ZRkjY/E+Xdg4AfffPZICCf98rYKWIHxX87AwwuIQ73rbVrev8goqrKmaXyu+VxyDqr1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#"><h1>DBMove</h1></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main class="d-flex align-items-center">
+    <div class="container">
+        <div id="wizard">
+          <h3>Step 1 Title</h3>
+          <section>
+           <h5 class="bd-wizard-step-title">Step 1</h5>
+           <h2 class="section-heading">Select Database</h2>
+           <p>Choose the database you'd like to work with from the options below.</p>
+            <div class="purpose-radios-wrapper">
+              
+                <div class="purpose-radio">
+                   <input type="radio" name="purpose" checked id="mobile-design" class="purpose-radio-input" value="Moile Design">
+                  <label for="mobile-design" class="purpose-radio-label">
+                    <span class="label-icon">
+                      <img src="/images/mysqlLogo.png" width="100px" alt="branding" class="label-icon-default">
+                      <img src="/images/mysqlLogo.png" width="100px"  alt="branding" class="label-icon-active">
+                    </span>
+                    <span class="label-text">MySQL</span>
+                  </label>
+                 </div>
+
+                 <div class="purpose-radio">
+                  <input type="radio" disabled name="purpose" id="branding" class="purpose-radio-input" value="Branding" >
+                 <label for="branding" class="purpose-radio-label">
+                   <span class="label-icon">
+                     <img src="assets/images/icon_branding.svg" alt="branding" class="label-icon-default">
+                     <img src="assets/images/icon_branding_green.svg" alt="branding" class="label-icon-active">
+                   </span>
+                   <span class="label-text">More Coming Soon...</span>
+                 </label>
+                </div>
+                 
+          </section>
+          <h3>Step 2 Title</h3>
+          <section>
+            <h5 class="bd-wizard-step-title">Step 2</h5>
+            <h2 class="section-heading">Enter your Database Credentials</h2>
+            <div class="form-group">
+              <label for="hostname" class="sr-only">Hostname</label>
+              <input type="text" name="host" id="hostname" class="form-control"  placeholder="Hostname">
+            </div>
+            <div class="form-group">
+              <label for="username" class="sr-only">Username</label>
+              <input type="text" name="user" id="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label for="password" class="sr-only">Password</label>
+              <input type="text" name="pass" id="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="database" class="sr-only">Database</label>
+              <input type="text" name="database" id="database" class="form-control" placeholder="Database">
+            </div>
+            
+          </section>
+          <h3>Step 3 Title</h3>
+          <section>
+              <h5 class="bd-wizard-step-title">Step 3</h5>
+              <h2 class="section-heading mb-5">Select Database Table</h2>
+              <div class="form-group">
+                <label for="table" class="sr-only">Table</label>
+                <select class="form-control" id="selectTable">
+                  <option>Select Table</option>
+                </select>
+              </div>
+              <div class="purpose-radio">
+                <input type="radio" name="action" checked id="actionmobile-design" class="purpose-radio-input" value="Import">
+               <label for="actionmobile-design" class="purpose-radio-label">
+                 <span class="label-icon">
+                   <img src="/images/import.png" width="100px" alt="branding" class="label-icon-default">
+                   <img src="/images/import.png" width="100px"  alt="branding" class="label-icon-active">
+                 </span>
+                 <span class="label-text">Import</span>
+               </label>
+              </div>
+
+              <div class="purpose-radio">
+               <input type="radio"  name="action" id="Actionbranding" class="purpose-radio-input" value="Export" >
+              <label for="Actionbranding" class="purpose-radio-label">
+                <span class="label-icon">
+                  <img src="/images/export.png" width="100px" alt="branding" class="label-icon-default">
+                  <img src="/images/export.png" width="100px" alt="branding" class="label-icon-active">
+                </span>
+                <span class="label-text">Export</span>
+              </label>
+             </div>
+             <div class="form-row" id="fileRow" style="margin-top: 10px;">
+              <div class="col-12">
+                <input type="file" class="form-control" name="file" id="file">
+              </div>
+              
+            </div>
+
+
+          </section>
+          <h3>Step 4 Title</h3>
+          <section>
+              <h5 class="bd-wizard-step-title">Step 4</h5>
+              <h2 class="section-heading mb-5">Column Mapping</h2>
+              <button id="addMapping" class="btn btn-sm btn-secondary" style="float: right;">Add Mapping</button>
+              <div class="form-row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="db" class="">Database Columns</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="db" class="">Sheet Columns</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div  id="mappingPairsContainer">
+                <!-- <div class="col-6">
+                  <div class="form-group">
+                    <label for="DB Coloumn" class="sr-only">DB Coloumn</label>
+                    <select type="text" name="DB Coloumn" id="DBColoumns" class="form-control" placeholder="DB Coloumn">
+                      <option>Select Coloumn</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="SheetColoumn" class="sr-only">SheetColoumn</label>
+                    <select type="text" name="SheetColoumn" id="SheetColoumns" class="form-control" placeholder="SheetColoumn">
+                      <option>Select Coloumn</option>
+                    </select>
+                  </div>
+                </div> -->
+                
+              </div>
+          </section>
+          <h3>Step 5 Title</h3>
+          <section>
+              <h5 class="bd-wizard-step-title">Step 5</h5>
+              <h2 class="section-heading mb-5" id="step5Heading">Processing</h2>
+              <h6 class="font-weight-bold">Status</h6>
+              <p class="mb-4" id="step5Status">Processing</p>
+             <button class="btn btn-secondary" style="display: none;">Download</button>
+
+          </section>
+        </div>
+    </div> 
+  </main>
+  <script>
+    var pathToFile = ''
+    var tableName = ''
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+  <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+  <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.steps.min.js"></script>
+  <script src="/assets/js/bd-wizard.js"></script>
+  <script>
+    $('#file').filepond();
+    
+    FilePond.setOptions({
+      server: {
+        process: {
+          url: '/upload/file',
+          method: 'POST',
+          withCredentials: false, // Adjust this according to your needs
+          headers: {}, // You can add custom headers here if required
+          ondata: (formData) => {
+                formData.append('host', $("#hostname").val());
+                formData.append('user', $("#username").val());
+                formData.append('pass',  $("#password").val());
+                formData.append('db',  $("#database").val());
+                formData.append('table',  $("#selectTable").val());
+                return formData;
+          },
+          onpreparefile: (file, metadata) => {
+                    // Add custom data to the file object
+                    console.log("preparing file")
+                    file.customData = {host : $("#hostname").val(), user : $("#username").val(), pass : $("#pass").val(), db : $("#db").val()}
+                    
+                    return file;
+                },
+          onload: (response) => {
+            const responseData = JSON.parse(response);
+            pathToFile = responseData.pathToFile
+            let keys = responseData.keys
+            let columns = responseData.columns
+
+            const SheetColoumns = document.getElementById("SheetColoumns");
+            const DBColoumns = document.getElementById("DBColoumns");
+
+            // keys.forEach(key => {
+            //     const option = document.createElement("option");
+            //     option.value = key; // You can set the value to the table name if needed
+            //     option.text = key;
+            //     SheetColoumns.appendChild(option)
+            // });
+
+            // columns.forEach(key => {
+            //     const option = document.createElement("option");
+            //     option.value = key; // You can set the value to the table name if needed
+            //     option.text = key;
+            //     DBColoumns.appendChild(option)
+            // });
+            const mapColumnsButton = document.getElementById("mapColumns");
+            const addMappingButton = document.getElementById("addMapping");
+            const mappingPairsContainer = document.getElementById("mappingPairsContainer")
+            // Function to add a new mapping pair
+            async function addMappingPair() {
+              if($(".mapping-pair").length < columns.length){
+
+                const mappingPair = document.createElement("div");
+                mappingPair.classList.add("form-row");
+                mappingPair.classList.add("mapping-pair");
+                mappingPair.style.marginTop = '10px'
+  
+                const mappingPairCol1 = document.createElement("div");
+                mappingPairCol1.classList.add("col-6");
+  
+                const mappingPairCol2 = document.createElement("div");
+                mappingPairCol2.classList.add("col-6");
+                // mappingPair.classList.add("mapping-pair");
+  
+                const dbSelect = document.createElement("select");
+                dbSelect.classList.add("db-select");
+                dbSelect.classList.add("form-control");
+  
+                let dbColumn = document.createElement("option");
+                dbColumn.value = '';
+                dbColumn.text = 'Select Database Column';
+                dbSelect.appendChild(dbColumn);
+  
+                columns.forEach((column) => {
+                    const option = document.createElement("option");
+                    option.value = column;
+                    option.text = column;
+                    dbSelect.appendChild(option);
+                });
+  
+                
+                const sheetSelect = document.createElement("select");
+                sheetSelect.classList.add("sheet-select");
+                sheetSelect.classList.add("form-control");
+                let sheetOption = document.createElement("option");
+                sheetOption.value = '';
+                sheetOption.text = 'Select Sheet Column';
+                sheetSelect.appendChild(sheetOption);
+                keys.forEach((key) => {
+                    const option = document.createElement("option");
+                    option.value = key;
+                    option.text = key;
+                    sheetSelect.appendChild(option);
+                });
+  
+                mappingPairCol1.appendChild(dbSelect);
+                mappingPairCol2.appendChild(sheetSelect);
+                
+                mappingPair.appendChild(mappingPairCol1)
+                mappingPair.appendChild(mappingPairCol2)
+  
+                mappingPairsContainer.appendChild(mappingPair);
+              }
+}
+
+addMappingButton.addEventListener("click", addMappingPair);
+
+                  // You can now use the responseData as needed in your frontend
+          },
+          onerror: (error) => {
+            console.log('Server error:', error);
+          },
+        },
+      },
+    });
+  </script>
+
+  <script>
+    const brandingRadio = document.getElementById("Actionbranding");
+    const mobileDesignRadio = document.getElementById("actionmobile-design");
+    const fileRowDiv = document.getElementById("fileRow");
+
+
+    // Function to show or hide the div based on the selected radio button
+    function toggleFileRowVisibility() {
+      if (brandingRadio.checked) {
+        fileRowDiv.style.display = "none";
+      } else {
+        fileRowDiv.style.display = "block";
+      }
+    }
+
+    // Initial call to set the initial visibility
+    toggleFileRowVisibility();
+
+    // Add event listeners to the radio buttons to update visibility
+    brandingRadio.addEventListener("change", toggleFileRowVisibility);
+    mobileDesignRadio.addEventListener("change", toggleFileRowVisibility);
+  </script>
+</body>
+</html>
